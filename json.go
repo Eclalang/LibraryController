@@ -33,12 +33,18 @@ func (j *Json) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	switch name {
 	case "marshal":
-		return []eclaType.Type{utils.GoToEclaType(json.Marshal(newArgs[0]))}, nil
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Map {
+			content, err := json.Marshal(newArgs[0].(map[string]string))
+			return []eclaType.Type{utils.GoToEclaType(content)}, err
+		} else if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+			content, err := json.Marshal(newArgs[0].([]map[string]string))
+			return []eclaType.Type{utils.GoToEclaType(content)}, err
+		}
 	case "unmarshal":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
-			return []eclaType.Type{utils.GoToEclaType(json.Unmarshal(newArgs[0].(string)))}, nil
+			content, err := json.Unmarshal(newArgs[0].(string))
+			return []eclaType.Type{utils.GoToEclaType(content)}, err
 		}
-		// TODO : Error
 	default:
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package json", name))
 	}

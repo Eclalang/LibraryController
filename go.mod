@@ -3,7 +3,7 @@ module github.com/Eclalang/LibraryController
 go 1.21.1
 
 require (
-	github.com/Eclalang/Ecla v0.0.0-20240110151435-f252bd0d1a98
+	github.com/Eclalang/Ecla v0.0.0-20240124153607-83d5d431b09b
 	github.com/Eclalang/cast v0.0.0-20230412075237-1628861597c7
 	github.com/Eclalang/console v0.0.0-20230412145904-e88489fbc97d
 	github.com/Eclalang/encoding v0.0.0-20230426103355-d5d8ac9cebd8
