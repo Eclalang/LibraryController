@@ -3,8 +3,6 @@ package LibraryController
 import (
 	"errors"
 	"fmt"
-	"reflect"
-
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
 	"github.com/Eclalang/LibraryController/utils"
 	"github.com/Eclalang/console"
@@ -17,16 +15,14 @@ type Console struct {
 func NewConsole() *Console {
 	return &Console{
 		functionMap: map[string]interface{}{
-			"printf":       nil,
-			"println":      nil,
-			"print":        nil,
-			"input":        nil,
-			"printInColor": nil,
-			"inputInt":     nil,
-			"inputFloat":   nil,
-			"confirm":      nil,
-			"progressBar":  nil,
 			"clear":        nil,
+			"input":        nil,
+			"inputFloat":   nil,
+			"inputInt":     nil,
+			"print":        nil,
+			"printf":       nil,
+			"printInColor": nil,
+			"println":      nil,
 		},
 	}
 }
@@ -40,38 +36,28 @@ func (c *Console) Call(name string, args []eclaType.Type) ([]eclaType.Type, erro
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package console", name))
 	}
 	switch name {
+	case "clear":
+		console.Clear()
+	case "input":
+		return []eclaType.Type{utils.GoToEclaType(console.Input())}, nil
+	case "inputFloat":
+		input, err := console.InputFloat()
+		return []eclaType.Type{utils.GoToEclaType(input)}, err
+	case "inputInt":
+		input, err := console.InputInt()
+		return []eclaType.Type{utils.GoToEclaType(input)}, err
+	case "print":
+		console.Print(newArgs...)
 	case "printf":
 		// TODO: refactor this line
 		console.Printf(newArgs[0].(string), newArgs[1:]...)
-	case "println":
-		console.Println(newArgs...)
-	case "print":
-		console.Print(newArgs...)
-	case "input":
-		return []eclaType.Type{utils.GoToEclaType(console.Input(newArgs...))}, nil
 	case "printInColor":
 		console.PrintInColor(newArgs[0].(string), newArgs[1:]...)
 		// To add later
 		//case "printlnInColor":
 		//	console.PrintlnInColor(newArgs[0].(string), newArgs[1:]...)
-	case "inputInt":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
-			return []eclaType.Type{utils.GoToEclaType(console.InputInt(newArgs[0].(string)))}, nil
-		}
-	case "inputFloat":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
-			return []eclaType.Type{utils.GoToEclaType(console.InputFloat(newArgs[0].(string)))}, nil
-		}
-	case "confirm":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
-			return []eclaType.Type{utils.GoToEclaType(console.Confirm(newArgs[0].(string)))}, nil
-		}
-	case "progressBar":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int {
-			console.ProgressBar(newArgs[0].(int))
-		}
-	case "clear":
-		console.Clear()
+	case "println":
+		console.Println(newArgs...)
 	default:
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package console", name))
 	}
