@@ -1,5 +1,7 @@
 github.com/Eclalang/Ecla v0.0.0-20240110151435-f252bd0d1a98 h1:ONflLLn+kxqJzJJjugt87gLA9Pf15Qusc3UJW5qrMgg=
 github.com/Eclalang/Ecla v0.0.0-20240110151435-f252bd0d1a98/go.mod h1:ubnywHWqnC20lOROuNDNjsKcy8KIoQFFZsEJOh/bRNw=
+github.com/Eclalang/Ecla v0.0.0-20240124153607-83d5d431b09b h1:wfvJOZHvr1KXUz69H0NSmlaPhS0+87BFlmdX15KZRi0=
+github.com/Eclalang/Ecla v0.0.0-20240124153607-83d5d431b09b/go.mod h1:tPE6w32+qi+IObVt1L/zuyGkmB2AJmHpXmecnXkvSV8=
 github.com/Eclalang/cast v0.0.0-20230412075237-1628861597c7 h1:pKeX3GmAplWLKg6uKvkBY//kZFzKASk2YjLeiCoMeV4=
 github.com/Eclalang/cast v0.0.0-20230412075237-1628861597c7/go.mod h1:RJAiwgqiEPT3kmoSYTBK+JhpGOI8YXRdxrQ99zJyA00=
 github.com/Eclalang/console v0.0.0-20230412145904-e88489fbc97d h1:Xf5MWfgpnhCbzmrmCMec7QCxNHB/Q5VcX/dId5XmgLo=
