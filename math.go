@@ -92,11 +92,23 @@ func (m *Math) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 			return []eclaType.Type{utils.GoToEclaType(math.Cbrt(newArgs[0].(float64)))}, nil
 		}
 	case "pow":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Pow(newArgs[0].(float64), newArgs[1].(float64)))}, nil
+		var x, y any
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			x = newArgs[0].(float64)
+		} else {
+			x = newArgs[0].(int)
 		}
+		if reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
+			y = newArgs[1].(float64)
+		} else {
+			y = newArgs[1].(int)
+		}
+		result, err := math.Pow(x, y)
+		return []eclaType.Type{utils.GoToEclaType(result)}, err
 	case "fact":
-		// TODO: Fix this
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Fact(newArgs[0].(float64)))}, nil
+		}
 	case "abs":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Abs(newArgs[0].(float64)))}, nil
