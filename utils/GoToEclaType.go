@@ -34,9 +34,10 @@ func GoToEclaType(arg any) eclaType.Type {
 		var keys []eclaType.Type
 		var values []eclaType.Type
 		newMap := reflect.ValueOf(arg)
-		for i := 0; i < newMap.Len(); i++ {
-			keys = append(keys, GoToEclaType(reflect.ValueOf(newMap.MapKeys()[i].Interface()).Interface()))
-			values = append(values, GoToEclaType(reflect.ValueOf(newMap.MapIndex(newMap.MapKeys()[i]).Interface()).Interface()))
+		iter := newMap.MapRange() // Get the map iterator
+		for iter.Next() {         // Get each key and value from iterator until exhausted
+			keys = append(keys, GoToEclaType(iter.Key().Interface()))       // Convert the key to eclaType
+			values = append(values, GoToEclaType(iter.Value().Interface())) // Convert the value to eclaType
 		}
 		return &eclaType.Map{Keys: keys, Values: values, Typ: fmt.Sprint(reflect.TypeOf(arg)), TypKey: reflect.TypeOf(arg).Key().String(), TypVal: reflect.TypeOf(arg).Elem().String()}
 	default:
