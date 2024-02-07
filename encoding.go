@@ -39,12 +39,9 @@ func (e *Encoding) Call(name string, args []eclaType.Type) ([]eclaType.Type, err
 	}
 	switch name {
 	case "asciiToString":
-		arg1 := newArgs[0].([]interface{})
-		var arg2 []int
-		for _, val := range arg1 {
-			arg2 = append(arg2, val.(int))
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+			return []eclaType.Type{utils.GoToEclaType(enc.AsciiToString(newArgs[0].([]int)))}, nil
 		}
-		return []eclaType.Type{utils.GoToEclaType(enc.AsciiToString(arg2))}, nil
 	case "decodeBase64":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
 			return []eclaType.Type{utils.GoToEclaType(enc.DecodeBase64(newArgs[0].(string)))}, nil
