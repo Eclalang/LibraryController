@@ -17,37 +17,37 @@ type Math struct {
 func NewMath() *Math {
 	return &Math{
 		functionMap: map[string]interface{}{
-			"pi":               nil,
-			"cos":              nil,
-			"sin":              nil,
-			"tan":              nil,
-			"ln":               nil,
-			"exp":              nil,
-			"sqrt":             nil,
-			"cbrt":             nil,
-			"pow":              nil,
-			"fact":             nil,
 			"abs":              nil,
-			"floor":            nil,
+			"acos":             nil,
+			"acosh":            nil,
+			"asin":             nil,
+			"asinh":            nil,
+			"atan":             nil,
+			"atanh":            nil,
+			"cbrt":             nil,
 			"ceil":             nil,
-			"trunc":            nil,
+			"cos":              nil,
+			"cosh":             nil,
+			"degreesToRadians": nil,
+			"exp":              nil,
+			"fact":             nil,
+			"floor":            nil,
+			"ln":               nil,
+			"log10":            nil,
 			"max":              nil,
 			"min":              nil,
-			"log10":            nil,
-			"round":            nil,
-			"degreesToRadians": nil,
-			"radiansToDegrees": nil,
 			"modulo":           nil,
+			"pi":               nil,
+			"pow":              nil,
+			"radiansToDegrees": nil,
 			"random":           nil,
-			"acos":             nil,
-			"asin":             nil,
-			"atan":             nil,
-			"cosh":             nil,
+			"round":            nil,
+			"sin":              nil,
 			"sinh":             nil,
+			"sqrt":             nil,
+			"tan":              nil,
 			"tanh":             nil,
-			"acosh":            nil,
-			"asinh":            nil,
-			"atanh":            nil,
+			"trunc":            nil,
 		},
 	}
 }
@@ -61,57 +61,73 @@ func (m *Math) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package math", name))
 	}
 	switch name {
-	case "pi":
-		return []eclaType.Type{utils.GoToEclaType(math.Pi())}, nil
-	case "cos":
+	case "abs":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Cos(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Abs(newArgs[0].(float64)))}, nil
 		}
-	case "sin":
+	case "acos":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Sin(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Acos(newArgs[0].(float64)))}, nil
 		}
-	case "tan":
+	case "acosh":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Tan(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Acosh(newArgs[0].(float64)))}, nil
 		}
-	case "ln":
+	case "asin":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Ln(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Asin(newArgs[0].(float64)))}, nil
 		}
-	case "exp":
+	case "asinh":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Exp(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Asinh(newArgs[0].(float64)))}, nil
 		}
-	case "sqrt":
+	case "atan":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Sqrt(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Atan(newArgs[0].(float64)))}, nil
+		}
+	case "atanh":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Atanh(newArgs[0].(float64)))}, nil
 		}
 	case "cbrt":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Cbrt(newArgs[0].(float64)))}, nil
 		}
-	case "pow":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Pow(newArgs[0].(float64), newArgs[1].(float64)))}, nil
+	case "ceil":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Ceil(newArgs[0].(float64)))}, nil
+		}
+	case "cos":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Cos(newArgs[0].(float64)))}, nil
+		}
+	case "cosh":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Cosh(newArgs[0].(float64)))}, nil
+		}
+	case "degreesToRadians":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.DegreesToRadians(newArgs[0].(float64)))}, nil
+		}
+	case "exp":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Exp(newArgs[0].(float64)))}, nil
 		}
 	case "fact":
-		// TODO: Fix this
-	case "abs":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Abs(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Fact(newArgs[0].(float64)))}, nil
 		}
 	case "floor":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Floor(newArgs[0].(float64)))}, nil
 		}
-	case "ceil":
+	case "ln":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Ceil(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Ln(newArgs[0].(float64)))}, nil
 		}
-	case "trunc":
+	case "log10":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Trunc(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Log10(newArgs[0].(float64)))}, nil
 		}
 	case "max":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
@@ -121,65 +137,61 @@ func (m *Math) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Min(newArgs[0].(float64), newArgs[1].(float64)))}, nil
 		}
-	case "log10":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Log10(newArgs[0].(float64)))}, nil
-		}
-	case "round":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Round(newArgs[0].(float64)))}, nil
-		}
-	case "degreesToRadians":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.DegreesToRadians(newArgs[0].(float64)))}, nil
-		}
-	case "radiansToDegrees":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.RadiansToDegrees(newArgs[0].(float64)))}, nil
-		}
 	case "modulo":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Modulo(newArgs[0].(float64), newArgs[1].(float64)))}, nil
+		}
+	case "pi":
+		return []eclaType.Type{utils.GoToEclaType(math.Pi())}, nil
+	case "pow":
+		var x, y any
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			x = newArgs[0].(float64)
+		} else {
+			x = newArgs[0].(int)
+		}
+		if reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
+			y = newArgs[1].(float64)
+		} else {
+			y = newArgs[1].(int)
+		}
+		result, err := math.Pow(x, y)
+		return []eclaType.Type{utils.GoToEclaType(result)}, err
+	case "radiansToDegrees":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.RadiansToDegrees(newArgs[0].(float64)))}, nil
 		}
 	case "random":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Random(newArgs[0].(float64), newArgs[1].(float64)))}, nil
 		}
-	case "acos":
+	case "round":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Acos(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Round(newArgs[0].(float64)))}, nil
 		}
-	case "asin":
+	case "sin":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Asin(newArgs[0].(float64)))}, nil
-		}
-	case "atan":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Atan(newArgs[0].(float64)))}, nil
-		}
-	case "cosh":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Cosh(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Sin(newArgs[0].(float64)))}, nil
 		}
 	case "sinh":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Sinh(newArgs[0].(float64)))}, nil
 		}
+	case "sqrt":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Sqrt(newArgs[0].(float64)))}, nil
+		}
+	case "tan":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+			return []eclaType.Type{utils.GoToEclaType(math.Tan(newArgs[0].(float64)))}, nil
+		}
 	case "tanh":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
 			return []eclaType.Type{utils.GoToEclaType(math.Tanh(newArgs[0].(float64)))}, nil
 		}
-	case "acosh":
+	case "trunc":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Acosh(newArgs[0].(float64)))}, nil
-		}
-	case "asinh":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Asinh(newArgs[0].(float64)))}, nil
-		}
-	case "atanh":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
-			return []eclaType.Type{utils.GoToEclaType(math.Atanh(newArgs[0].(float64)))}, nil
+			return []eclaType.Type{utils.GoToEclaType(math.Trunc(newArgs[0].(float64)))}, nil
 		}
 	default:
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package math", name))
