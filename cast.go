@@ -3,6 +3,7 @@ package LibraryController
 import (
 	"errors"
 	"fmt"
+	"github.com/Eclalang/Ecla/interpreter"
 	"reflect"
 
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
@@ -59,4 +60,8 @@ func (c *Cast) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package cast", name))
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
+}
+
+func (c *Cast) GetScope() *interpreter.Scope {
+	return nil
 }

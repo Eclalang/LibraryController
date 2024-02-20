@@ -1,12 +1,14 @@
 package LibraryController
 
 import (
+	"github.com/Eclalang/Ecla/interpreter"
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
 )
 
 // Lib is the interface of a lib.
 type Lib interface {
 	Call(name string, args []eclaType.Type) ([]eclaType.Type, error)
+	GetScope() *interpreter.Scope
 }
 
 var (
