@@ -3,6 +3,7 @@ package LibraryController
 import (
 	"errors"
 	"fmt"
+	"github.com/Eclalang/Ecla/interpreter"
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
 	"github.com/Eclalang/LibraryController/utils"
 	"github.com/Eclalang/console"
@@ -63,4 +64,8 @@ func (c *Console) Call(name string, args []eclaType.Type) ([]eclaType.Type, erro
 	}
 
 	return []eclaType.Type{eclaType.Null{}}, nil
+}
+
+func (c *Console) GetScope() *interpreter.Scope {
+	return nil
 }
