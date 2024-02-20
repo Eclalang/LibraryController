@@ -3,7 +3,6 @@ package LibraryController
 import (
 	"errors"
 	"fmt"
-	"github.com/Eclalang/Ecla/interpreter"
 
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
 	"github.com/Eclalang/LibraryController/utils"
@@ -34,8 +33,4 @@ func (d *DebugKingdom) Call(name string, args []eclaType.Type) ([]eclaType.Type,
 		fmt.Print("\033[H\033[2J")
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
-}
-
-func (d *DebugKingdom) GetScope() *interpreter.Scope {
-	return nil
 }
