@@ -3,7 +3,6 @@ package LibraryController
 import (
 	"errors"
 	"fmt"
-	"github.com/Eclalang/Ecla/interpreter"
 	"reflect"
 
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
@@ -51,8 +50,4 @@ func (j *Json) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 
 	return []eclaType.Type{eclaType.Null{}}, nil
-}
-
-func (j *Json) GetScope() *interpreter.Scope {
-	return nil
 }

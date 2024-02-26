@@ -3,7 +3,6 @@ package LibraryController
 import (
 	"errors"
 	"fmt"
-	"github.com/Eclalang/Ecla/interpreter"
 	"reflect"
 
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
@@ -198,8 +197,4 @@ func (m *Math) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package math", name))
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
-}
-
-func (m *Math) GetScope() *interpreter.Scope {
-	return nil
 }
