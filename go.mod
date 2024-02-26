@@ -9,7 +9,7 @@ require (
 	github.com/Eclalang/encoding v1.0.0
 	github.com/Eclalang/hash v1.0.0
 	github.com/Eclalang/json v1.0.0
-	github.com/Eclalang/math v0.0.0-20240207094845-3339ca7db7ff
+	github.com/Eclalang/math v1.0.0
 	github.com/Eclalang/os v0.0.0-20240207163028-e6e2204c0b60
 	github.com/Eclalang/regex v0.0.0-20230412080238-d04497c06e2a
 	github.com/Eclalang/strings v0.0.0-20240207094647-1af7a6fff1bf
