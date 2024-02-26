@@ -39,35 +39,35 @@ func (h *Hash) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	switch name {
 	case "hashmd5":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashmd5(newArgs[0].(string)))}, nil
 		}
 	case "hashsha1":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha1(newArgs[0].(string)))}, nil
 		}
 	case "hashsha224":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha224(newArgs[0].(string)))}, nil
 		}
 	case "hashsha256":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha256(newArgs[0].(string)))}, nil
 		}
 	case "hashsha384":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha384(newArgs[0].(string)))}, nil
 		}
 	case "hashsha512":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha512(newArgs[0].(string)))}, nil
 		}
 	case "hashsha512_224":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha512_224(newArgs[0].(string)))}, nil
 		}
 	case "hashsha512_256":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(hash.Hashsha512_256(newArgs[0].(string)))}, nil
 		}
 	default:
