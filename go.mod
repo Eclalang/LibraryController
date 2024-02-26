@@ -11,7 +11,7 @@ require (
 	github.com/Eclalang/json v1.0.0
 	github.com/Eclalang/math v1.0.0
 	github.com/Eclalang/os v1.0.0
-	github.com/Eclalang/regex v0.0.0-20230412080238-d04497c06e2a
+	github.com/Eclalang/regex v1.0.1
 	github.com/Eclalang/strings v1.0.0
-	github.com/Eclalang/time v0.0.0-20230412080614-ad9ed2a84fb1
+	github.com/Eclalang/time v1.0.0
 )

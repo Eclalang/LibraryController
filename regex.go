@@ -22,6 +22,7 @@ func NewRegex() *Regex {
 			"findAllIndex": nil,
 			"findIndex":    nil,
 			"match":        nil,
+			"replace":      nil,
 			"replaceAll":   nil,
 		},
 	}
@@ -37,27 +38,31 @@ func (r *Regex) Call(name string, args []eclaType.Type) ([]eclaType.Type, error)
 	}
 	switch name {
 	case "find":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(regex.Find(newArgs[0].(string), newArgs[1].(string)))}, nil
 		}
 	case "findAll":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(regex.FindAll(newArgs[0].(string), newArgs[1].(string)))}, nil
 		}
 	case "findAllIndex":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(regex.FindAllIndex(newArgs[0].(string), newArgs[1].(string)))}, nil
 		}
 	case "findIndex":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(regex.FindIndex(newArgs[0].(string), newArgs[1].(string)))}, nil
 		}
 	case "match":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(regex.Match(newArgs[0].(string), newArgs[1].(string)))}, nil
 		}
+	case "replace":
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && reflect.TypeOf(newArgs[2]).Kind() == reflect.String && reflect.TypeOf(newArgs[3]).Kind() == reflect.Int && len(newArgs) == 4 {
+			return []eclaType.Type{utils.GoToEclaType(regex.Replace(newArgs[0].(string), newArgs[1].(string), newArgs[2].(string), newArgs[3].(int)))}, nil
+		}
 	case "replaceAll":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && reflect.TypeOf(newArgs[2]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && reflect.TypeOf(newArgs[2]).Kind() == reflect.String && len(newArgs) == 3 {
 			return []eclaType.Type{utils.GoToEclaType(regex.ReplaceAll(newArgs[0].(string), newArgs[1].(string), newArgs[2].(string)))}, nil
 		}
 	default:
