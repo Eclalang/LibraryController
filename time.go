@@ -37,25 +37,25 @@ func (t *Time) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	switch name {
 	case "convertRoman":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(time.ConvertRoman(newArgs[0].(string)))}, nil
 		}
 	case "date":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && reflect.TypeOf(newArgs[1]).Kind() == reflect.Int && reflect.TypeOf(newArgs[2]).Kind() == reflect.Int && reflect.TypeOf(newArgs[3]).Kind() == reflect.Int && reflect.TypeOf(newArgs[4]).Kind() == reflect.Int && reflect.TypeOf(newArgs[5]).Kind() == reflect.Int {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && reflect.TypeOf(newArgs[1]).Kind() == reflect.Int && reflect.TypeOf(newArgs[2]).Kind() == reflect.Int && reflect.TypeOf(newArgs[3]).Kind() == reflect.Int && reflect.TypeOf(newArgs[4]).Kind() == reflect.Int && reflect.TypeOf(newArgs[5]).Kind() == reflect.Int && len(newArgs) == 6 {
 			return []eclaType.Type{utils.GoToEclaType(time.Date(newArgs[0].(int), newArgs[1].(int), newArgs[2].(int), newArgs[3].(int), newArgs[4].(int), newArgs[5].(int)))}, nil
 		}
 	case "now":
 		return []eclaType.Type{utils.GoToEclaType(time.Now())}, nil
 	case "sleep":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && len(newArgs) == 1 {
 			time.Sleep(newArgs[0].(int))
 		}
 	case "strftime":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(time.Strftime(newArgs[0].(string), newArgs[1].(string)))}, nil
 		}
 	case "timer":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && len(newArgs) == 1 {
 			time.Timer(newArgs[0].(int))
 		}
 	default:
