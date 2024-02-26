@@ -144,19 +144,21 @@ func (m *Math) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	case "pi":
 		return []eclaType.Type{utils.GoToEclaType(math.Pi())}, nil
 	case "pow":
-		var x, y any
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && len(newArgs) == 1 {
-			x = newArgs[0].(float64)
-		} else {
-			x = newArgs[0].(int)
+		if len(newArgs) == 2 {
+			var x, y any
+			if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+				x = newArgs[0].(float64)
+			} else {
+				x = newArgs[0].(int)
+			}
+			if reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 {
+				y = newArgs[1].(float64)
+			} else {
+				y = newArgs[1].(int)
+			}
+			result, err := math.Pow(x, y)
+			return []eclaType.Type{utils.GoToEclaType(result)}, err
 		}
-		if reflect.TypeOf(newArgs[1]).Kind() == reflect.Float64 && len(newArgs) == 1 {
-			y = newArgs[1].(float64)
-		} else {
-			y = newArgs[1].(int)
-		}
-		result, err := math.Pow(x, y)
-		return []eclaType.Type{utils.GoToEclaType(result)}, err
 	case "radiansToDegrees":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(math.RadiansToDegrees(newArgs[0].(float64)))}, nil
