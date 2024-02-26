@@ -10,7 +10,7 @@ require (
 	github.com/Eclalang/hash v1.0.0
 	github.com/Eclalang/json v1.0.0
 	github.com/Eclalang/math v1.0.0
-	github.com/Eclalang/os v0.0.0-20240207163028-e6e2204c0b60
+	github.com/Eclalang/os v1.0.0
 	github.com/Eclalang/regex v0.0.0-20230412080238-d04497c06e2a
 	github.com/Eclalang/strings v0.0.0-20240207094647-1af7a6fff1bf
 	github.com/Eclalang/time v0.0.0-20230412080614-ad9ed2a84fb1

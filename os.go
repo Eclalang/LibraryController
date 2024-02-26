@@ -53,19 +53,19 @@ func (o *Os) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) {
 	}
 	switch name {
 	case "chown":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.Int && reflect.TypeOf(newArgs[2]).Kind() == reflect.Int {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.Int && reflect.TypeOf(newArgs[2]).Kind() == reflect.Int && len(newArgs) == 3 {
 			os.Chown(newArgs[0].(string), newArgs[1].(int), newArgs[2].(int))
 		}
 	case "clearEnv":
 		os.ClearEnv()
 	case "create":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			os.Create(newArgs[0].(string))
 		}
 	case "getegid":
 		return []eclaType.Type{utils.GoToEclaType(os.Getegid())}, nil
 	case "getEnv":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(os.GetEnv(newArgs[0].(string)))}, nil
 		}
 	case "geteuid":
@@ -85,39 +85,39 @@ func (o *Os) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) {
 	case "getwd":
 		return []eclaType.Type{utils.GoToEclaType(os.Getwd())}, nil
 	case "mkdir":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			os.Mkdir(newArgs[0].(string))
 		}
 	case "readDir":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(os.ReadDir(newArgs[0].(string)))}, nil
 		}
 	case "readFile":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(os.ReadFile(newArgs[0].(string)))}, nil
 		}
 	case "remove":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			os.Remove(newArgs[0].(string))
 		}
 	case "removeAll":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			os.RemoveAll(newArgs[0].(string))
 		}
 	case "setEnv":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			os.SetEnv(newArgs[0].(string), newArgs[1].(string))
 		}
 	case "setEnvByFile":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
-			os.SetEnvByFile(newArgs[0].(string))
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
+			return []eclaType.Type{eclaType.Null{}}, os.SetEnvByFile(newArgs[0].(string))
 		}
 	case "unsetEnv":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			os.UnsetEnv(newArgs[0].(string))
 		}
 	case "writeFile":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			os.WriteFile(newArgs[0].(string), newArgs[1].(string))
 		}
 	default:
