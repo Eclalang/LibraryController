@@ -8,7 +8,7 @@ require (
 	github.com/Eclalang/console v1.0.0
 	github.com/Eclalang/encoding v1.0.0
 	github.com/Eclalang/hash v1.0.0
-	github.com/Eclalang/json v0.0.0-20240207094829-384a74bcf3ef
+	github.com/Eclalang/json v1.0.0
 	github.com/Eclalang/math v0.0.0-20240207094845-3339ca7db7ff
 	github.com/Eclalang/os v0.0.0-20240207163028-e6e2204c0b60
 	github.com/Eclalang/regex v0.0.0-20230412080238-d04497c06e2a

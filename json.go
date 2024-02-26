@@ -33,15 +33,17 @@ func (j *Json) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	switch name {
 	case "marshal":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Map {
-			content, err := json.Marshal(newArgs[0].(map[string]string))
-			return []eclaType.Type{utils.GoToEclaType(content)}, err
-		} else if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
-			content, err := json.Marshal(newArgs[0].([]map[string]string))
-			return []eclaType.Type{utils.GoToEclaType(content)}, err
+		if len(newArgs) == 1 {
+			if reflect.TypeOf(newArgs[0]).Kind() == reflect.Map {
+				content, err := json.Marshal(newArgs[0].(map[string]string))
+				return []eclaType.Type{utils.GoToEclaType(content)}, err
+			} else if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+				content, err := json.Marshal(newArgs[0].([]map[string]string))
+				return []eclaType.Type{utils.GoToEclaType(content)}, err
+			}
 		}
 	case "unmarshal":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			content, err := json.Unmarshal(newArgs[0].(string))
 			return []eclaType.Type{utils.GoToEclaType(content)}, err
 		}
