@@ -36,23 +36,23 @@ func (c *Cast) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	switch name {
 	case "atoi":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(cast.Atoi(newArgs[0].(string)))}, nil
 		}
 	case "floatToInt":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Float64 && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(cast.FloatToInt(newArgs[0].(float64)))}, nil
 		}
 	case "intToFloat":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(cast.IntToFloat(newArgs[0].(int)))}, nil
 		}
 	case "parseBool":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(cast.ParseBool(newArgs[0].(string)))}, nil
 		}
 	case "parseFloat":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.Int {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.Int && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(cast.ParseFloat(newArgs[0].(string), newArgs[1].(int)))}, nil
 		}
 	default:
