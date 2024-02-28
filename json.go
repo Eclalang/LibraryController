@@ -35,10 +35,10 @@ func (j *Json) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	case "marshal":
 		if len(newArgs) == 1 {
 			if reflect.TypeOf(newArgs[0]).Kind() == reflect.Map {
-				content, err := json.Marshal(newArgs[0].(map[string]string))
+				content, err := json.Marshal(newArgs[0].(map[string]any))
 				return []eclaType.Type{utils.GoToEclaType(content)}, err
 			} else if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
-				content, err := json.Marshal(newArgs[0].([]map[string]string))
+				content, err := json.Marshal(newArgs[0].([]map[string]any))
 				return []eclaType.Type{utils.GoToEclaType(content)}, err
 			}
 		}
