@@ -39,31 +39,31 @@ func (e *Encoding) Call(name string, args []eclaType.Type) ([]eclaType.Type, err
 	}
 	switch name {
 	case "asciiToString":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.AsciiToString(newArgs[0].([]int)))}, nil
 		}
 	case "decodeBase64":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.DecodeBase64(newArgs[0].(string)))}, nil
 		}
 	case "decodeGob":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.DecodeGob(newArgs[0].([]int)))}, nil
 		}
 	case "decodeHex":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.DecodeHex(newArgs[0].(string)))}, nil
 		}
 	case "encodeBase64":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.EncodeBase64(newArgs[0].([]int)))}, nil
 		}
 	case "encodeGob":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.EncodeGob(newArgs[0].(string)))}, nil
 		}
 	case "encodeHex":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice {
+		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Slice && len(newArgs) == 1 {
 			return []eclaType.Type{utils.GoToEclaType(enc.EncodeHex(newArgs[0].([]int)))}, nil
 		}
 	case "stringToAscii":
