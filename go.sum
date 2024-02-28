@@ -26,6 +26,8 @@ github.com/Eclalang/json v0.0.0-20240207094829-384a74bcf3ef h1:nLRLTTGMK1qmBIylt
 github.com/Eclalang/json v0.0.0-20240207094829-384a74bcf3ef/go.mod h1:yr0YD25iKfdqzbchd0LY04/IswgBow51BPomNXIK+2k=
 github.com/Eclalang/json v1.0.0 h1:o8/ZAjuotZ3kmzAngwRkDPIHsVKta2o4tkaD8qn+7e8=
 github.com/Eclalang/json v1.0.0/go.mod h1:yr0YD25iKfdqzbchd0LY04/IswgBow51BPomNXIK+2k=
+github.com/Eclalang/json v1.0.1 h1:B3ux43HrauYz+vpy4IpiqvWtDNR/yBd4ttmArsPIaBM=
+github.com/Eclalang/json v1.0.1/go.mod h1:yr0YD25iKfdqzbchd0LY04/IswgBow51BPomNXIK+2k=
 github.com/Eclalang/math v0.0.0-20240207094845-3339ca7db7ff h1:iWve/tVWztLItNshB1nUepm/MmUyE8BpuL1u2p8gmcM=
 github.com/Eclalang/math v0.0.0-20240207094845-3339ca7db7ff/go.mod h1:fsm8hu/CrnnYL1HNvftRyQp47ENW4QRs5AC+f2V+hOc=
 github.com/Eclalang/math v1.0.0 h1:31iDg06IV/Ns45T1Z5j6mdO3sIIePNeouCGDucZj4xM=
