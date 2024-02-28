@@ -54,3 +54,5 @@ github.com/Eclalang/time v0.0.0-20230412080614-ad9ed2a84fb1 h1:d0EBdW1690SPusWNj
 github.com/Eclalang/time v0.0.0-20230412080614-ad9ed2a84fb1/go.mod h1://+Z1TD75utJJ7ob1E+D60sNezGOI3T7rhN17jYGnvM=
 github.com/Eclalang/time v1.0.0 h1:ApbrWsw1Uorq28TGsl23iZpR7qnWVsoNkwMWbrgQLNs=
 github.com/Eclalang/time v1.0.0/go.mod h1://+Z1TD75utJJ7ob1E+D60sNezGOI3T7rhN17jYGnvM=
+github.com/Eclalang/time v1.0.1 h1:POiM/SNM6MxIhvbpNXa863LKgdIV8HWvXl9xi8ijKyQ=
+github.com/Eclalang/time v1.0.1/go.mod h1://+Z1TD75utJJ7ob1E+D60sNezGOI3T7rhN17jYGnvM=
