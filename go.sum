@@ -10,6 +10,8 @@ github.com/Eclalang/console v0.0.0-20240207094633-ad734f120a0a h1:IBaYgeCVG28vqB
 github.com/Eclalang/console v0.0.0-20240207094633-ad734f120a0a/go.mod h1:RHRoUAVzxpcTVzX/rPm5VFjOUrshw4v9pBVDlCEmwQM=
 github.com/Eclalang/console v1.0.0 h1:3gBTNAWU4zhZ/0LpnEvfuszOPNPMU/CsgmWW0fdWxiM=
 github.com/Eclalang/console v1.0.0/go.mod h1:RHRoUAVzxpcTVzX/rPm5VFjOUrshw4v9pBVDlCEmwQM=
+github.com/Eclalang/console v1.0.1 h1:t2Jc9cH19wT4/polJKNnnUmasl9f4pbVt81+p5lm5Kg=
+github.com/Eclalang/console v1.0.1/go.mod h1:RHRoUAVzxpcTVzX/rPm5VFjOUrshw4v9pBVDlCEmwQM=
 github.com/Eclalang/encoding v0.0.0-20230426103355-d5d8ac9cebd8 h1:WqTJN7ui5vYITJeiinOba/x40IXuKYPuyLkTKpQk/X0=
 github.com/Eclalang/encoding v0.0.0-20230426103355-d5d8ac9cebd8/go.mod h1:fc3/K5xxbEf8fRSBhxunDFRerN3Wr6CXJ2lyA1nbxWA=
 github.com/Eclalang/encoding v1.0.0 h1:hmfE+ahVfLQxAHgjdMX96gYKiL3UTgcpjWO8fRv4ODE=
@@ -32,6 +34,8 @@ github.com/Eclalang/os v0.0.0-20240207163028-e6e2204c0b60 h1:vEQbT4mJQeB3pI1xO47
 github.com/Eclalang/os v0.0.0-20240207163028-e6e2204c0b60/go.mod h1:aOlOP4WanamjHncVvr4hRCUkF0FRh6Yud1Suu9EviRo=
 github.com/Eclalang/os v1.0.0 h1:/hDQ4rZyzL03zSzUNryjDzMvQrMERD055wL9KWuOhQA=
 github.com/Eclalang/os v1.0.0/go.mod h1:aOlOP4WanamjHncVvr4hRCUkF0FRh6Yud1Suu9EviRo=
+github.com/Eclalang/os v1.0.1 h1:s2gbGRrnztqY9+rrReTjXNXdJWlm2xL8OoKEnYinItk=
+github.com/Eclalang/os v1.0.1/go.mod h1:aOlOP4WanamjHncVvr4hRCUkF0FRh6Yud1Suu9EviRo=
 github.com/Eclalang/regex v0.0.0-20230412080238-d04497c06e2a h1:pcfPdmyk16qjlJfdTuQvL0xK+KYfsStevoAgtvS6w+U=
 github.com/Eclalang/regex v0.0.0-20230412080238-d04497c06e2a/go.mod h1://L9ebqTHyWDZWhmsvbmWFjfczjNUHGcRKpZj8dDR00=
 github.com/Eclalang/regex v1.0.0 h1:E6z4D+Lpam1EaNbMSyZoY3mK96KLFCUueL9uaFuEkXM=
