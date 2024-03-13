@@ -2,6 +2,8 @@ github.com/Eclalang/Ecla v0.0.0-20240206190255-910d6038b646 h1:dRcu/GqygY5DHLVv6
 github.com/Eclalang/Ecla v0.0.0-20240206190255-910d6038b646/go.mod h1:tPE6w32+qi+IObVt1L/zuyGkmB2AJmHpXmecnXkvSV8=
 github.com/Eclalang/Ecla v0.0.0-20240226105437-4bbbd5398f7b h1:FscEZrYldHh6f1dcWrsEA4ytaPRcFIAzSaZuX+y5aBs=
 github.com/Eclalang/Ecla v0.0.0-20240226105437-4bbbd5398f7b/go.mod h1:HarV5PBLjxe2odKkl252DlGOjt0Tb+k0pTpJSpsZ45Q=
+github.com/Eclalang/Ecla v1.0.0 h1:JrbxU5m6hWfJ8D5/xsqtbhWljOOetDdV6JzEU82/4Fc=
+github.com/Eclalang/Ecla v1.0.0/go.mod h1:0Nq24TRfBRBY5oKK+U2hpdzQV0rlisPQZ5nhBLNGxAU=
 github.com/Eclalang/cast v0.0.0-20230412075237-1628861597c7 h1:pKeX3GmAplWLKg6uKvkBY//kZFzKASk2YjLeiCoMeV4=
 github.com/Eclalang/cast v0.0.0-20230412075237-1628861597c7/go.mod h1:RJAiwgqiEPT3kmoSYTBK+JhpGOI8YXRdxrQ99zJyA00=
 github.com/Eclalang/cast v1.0.0 h1:wEdtCFSLULp2Gm77/mM6mxiLOvLe/M5R3mgUfQKnzmc=
