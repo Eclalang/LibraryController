@@ -22,7 +22,6 @@ func NewTime() *Time {
 			"now":          nil,
 			"sleep":        nil,
 			"strftime":     nil,
-			"timer":        nil,
 		},
 	}
 }
@@ -47,16 +46,17 @@ func (t *Time) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	case "now":
 		return []eclaType.Type{utils.GoToEclaType(time.Now())}, nil
 	case "sleep":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && len(newArgs) == 1 {
-			time.Sleep(newArgs[0].(int))
+		if len(newArgs) == 1 {
+			switch reflect.TypeOf(newArgs[0]).Kind() {
+			case reflect.Int:
+				time.Sleep(newArgs[0].(int))
+			case reflect.Float64:
+				time.Sleep(newArgs[0].(float64))
+			}
 		}
 	case "strftime":
 		if reflect.TypeOf(newArgs[0]).Kind() == reflect.String && reflect.TypeOf(newArgs[1]).Kind() == reflect.String && len(newArgs) == 2 {
 			return []eclaType.Type{utils.GoToEclaType(time.Strftime(newArgs[0].(string), newArgs[1].(string)))}, nil
-		}
-	case "timer":
-		if reflect.TypeOf(newArgs[0]).Kind() == reflect.Int && len(newArgs) == 1 {
-			time.Timer(newArgs[0].(int))
 		}
 	default:
 		return nil, errors.New(fmt.Sprintf("Method %s not found in package time", name))
