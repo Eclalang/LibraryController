@@ -122,3 +122,7 @@ func (s *Strings) Call(name string, args []eclaType.Type) ([]eclaType.Type, erro
 
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (s *Strings) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

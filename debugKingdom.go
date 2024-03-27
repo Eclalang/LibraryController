@@ -34,3 +34,7 @@ func (d *DebugKingdom) Call(name string, args []eclaType.Type) ([]eclaType.Type,
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (d *DebugKingdom) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

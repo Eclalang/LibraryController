@@ -73,3 +73,7 @@ func (e *Encoding) Call(name string, args []eclaType.Type) ([]eclaType.Type, err
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (e *Encoding) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

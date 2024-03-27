@@ -76,3 +76,7 @@ func (h *Hash) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (h *Hash) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

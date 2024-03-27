@@ -200,3 +200,7 @@ func (m *Math) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (m *Math) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

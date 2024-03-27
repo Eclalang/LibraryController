@@ -14,6 +14,8 @@ github.com/Eclalang/console v1.0.0 h1:3gBTNAWU4zhZ/0LpnEvfuszOPNPMU/CsgmWW0fdWxi
 github.com/Eclalang/console v1.0.0/go.mod h1:RHRoUAVzxpcTVzX/rPm5VFjOUrshw4v9pBVDlCEmwQM=
 github.com/Eclalang/console v1.0.1 h1:t2Jc9cH19wT4/polJKNnnUmasl9f4pbVt81+p5lm5Kg=
 github.com/Eclalang/console v1.0.1/go.mod h1:RHRoUAVzxpcTVzX/rPm5VFjOUrshw4v9pBVDlCEmwQM=
+github.com/Eclalang/console v1.0.2 h1:IQ5zY+7vvotHDDCXOsRsIu+waAwey+X4yItnM8Jr0kc=
+github.com/Eclalang/console v1.0.2/go.mod h1:wXf4+hC8kNolIfLvENuTKvNuGEo/YumYztONSgPNSTY=
 github.com/Eclalang/encoding v0.0.0-20230426103355-d5d8ac9cebd8 h1:WqTJN7ui5vYITJeiinOba/x40IXuKYPuyLkTKpQk/X0=
 github.com/Eclalang/encoding v0.0.0-20230426103355-d5d8ac9cebd8/go.mod h1:fc3/K5xxbEf8fRSBhxunDFRerN3Wr6CXJ2lyA1nbxWA=
 github.com/Eclalang/encoding v1.0.0 h1:hmfE+ahVfLQxAHgjdMX96gYKiL3UTgcpjWO8fRv4ODE=

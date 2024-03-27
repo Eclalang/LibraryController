@@ -64,3 +64,7 @@ func (c *Console) Call(name string, args []eclaType.Type) ([]eclaType.Type, erro
 
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (c *Console) GetVariables() map[string]eclaType.Type {
+	return console.Variables
+}
