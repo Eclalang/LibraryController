@@ -53,3 +53,7 @@ func (j *Json) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (j *Json) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

@@ -60,3 +60,7 @@ func (c *Cast) Call(name string, args []eclaType.Type) ([]eclaType.Type, error) 
 	}
 	return []eclaType.Type{eclaType.Null{}}, nil
 }
+
+func (c *Cast) GetVariables() map[string]eclaType.Type {
+	return map[string]eclaType.Type{}
+}

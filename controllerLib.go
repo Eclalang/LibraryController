@@ -7,6 +7,7 @@ import (
 // Lib is the interface of a lib.
 type Lib interface {
 	Call(name string, args []eclaType.Type) ([]eclaType.Type, error)
+	GetVariables() map[string]eclaType.Type
 }
 
 var (
