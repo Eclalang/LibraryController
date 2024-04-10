@@ -18,6 +18,7 @@ var (
 func init() {
 
 	allLibs = map[string]func() Lib{
+		"array": func() Lib { return NewArray() },
 		"console": func() Lib {
 			return NewConsole()
 		},
