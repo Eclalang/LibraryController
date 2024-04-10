@@ -15,3 +15,5 @@ require (
 	github.com/Eclalang/strings v1.0.0
 	github.com/Eclalang/time v1.1.1
 )
+
+require github.com/Eclalang/array v1.0.0 // indirect
