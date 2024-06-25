@@ -1,9 +1,71 @@
 package utils
 
 import (
+	"fmt"
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
 	"reflect"
 )
+
+type field struct {
+	rField reflect.StructField
+	rValue reflect.Value
+}
+
+func (f field) String() string {
+	return fmt.Sprintf("Field: %v, Value: %v", f.rField, f.rValue)
+}
+
+func FieldsToGenericStruct(fields []field) (reflect.Value, error) {
+	// Create a new instance of the destination type
+	var fieldsStruct []reflect.StructField
+	var fieldsValues []reflect.Value
+	for _, f := range fields {
+		fieldsStruct = append(fieldsStruct, f.rField)
+		fieldsValues = append(fieldsValues, f.rValue)
+	}
+	// Create a new instance of the destination type
+	ogStructOf := reflect.StructOf(fieldsStruct)
+	inter := reflect.New(ogStructOf).Elem().Interface()
+
+	// Get the value of the source struct
+	srcVal := reflect.ValueOf(inter)
+
+	// Get the type of the source struct
+	srcType := srcVal.Type()
+
+	// Create a new instance of the destination type
+	dst := reflect.New(srcType).Elem()
+
+	// dont do any checks since the destination type is a generic struct
+	// Copy fields with their values from the source struct to the destination struct
+	for i := 0; i < srcVal.NumField(); i++ {
+		dstField := dst.FieldByName(srcType.Field(i).Name)
+		if dstField.IsValid() && dstField.CanSet() {
+			dstField.Set(fieldsValues[i])
+		}
+	}
+
+	return dst, nil
+}
+
+func EclaStructFieldsToFilds(eclaStruct *eclaType.Struct) []field {
+	var fields []field
+	for key, val := range eclaStruct.Fields {
+		var f field
+		var derefValGoType = EclaTypeToGo(*val)
+		if derefValGoType == nil {
+			// for now, we will just ignore the field if it is nil since it is not possible to get the type of nil except when using a function in the EclaTypeToGo function
+			continue
+		}
+		f.rField = reflect.StructField{
+			Name: key,
+			Type: reflect.TypeOf(derefValGoType),
+		}
+		f.rValue = reflect.ValueOf(derefValGoType)
+		fields = append(fields, f)
+	}
+	return fields
+}
 
 // EclaTypeToGo converts an eclaType to a go type.
 func EclaTypeToGo(arg eclaType.Type) any {
@@ -37,6 +99,13 @@ func EclaTypeToGo(arg eclaType.Type) any {
 			mapVal.SetMapIndex(reflect.ValueOf(k), reflect.ValueOf(v))
 		}
 		return mapVal.Interface()
+	case *eclaType.Struct:
+		eclaStruct := arg.(*eclaType.Struct)
+		out, err := FieldsToGenericStruct(EclaStructFieldsToFilds(eclaStruct))
+		if err != nil {
+			return nil
+		}
+		return out.Interface()
 	default:
 		return nil
 	}
