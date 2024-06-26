@@ -1,8 +1,5 @@
 package utils
 
-// If you have tried to optimize this code but failed add the time wasted to the counter below
-// Time wasted optimizing : 5h
-
 import (
 	"github.com/Eclalang/Ecla/interpreter/eclaType"
 	"reflect"
@@ -10,12 +7,12 @@ import (
 
 func EclaStructFieldsToFields(eclaStruct *eclaType.Struct) []field {
 	var fields []field
-	for key, val := range eclaStruct.Fields {
+	for _, key := range eclaStruct.Definition.Order {
+		val := eclaStruct.Fields[key]
 		var f field
 		var derefValGoType = EclaTypeToGo(*val)
 		if derefValGoType == nil {
-			// for now, we will just ignore the field if it is nil since it is not possible to get the type of nil,
-			// except when using a function in the EclaTypeToGo function
+			// for now, we will just ignore the field if it is nil since it is not possible to get the type of nil except when using a function in the EclaTypeToGo function
 			continue
 		}
 		f.rField = reflect.StructField{
