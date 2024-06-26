@@ -1,54 +1,54 @@
 package utils
 
+// If you have tried to optimize this code but failed add the time wasted to the counter below
+// Time wasted optimizing : 13h
+
 import (
 	"fmt"
 	"reflect"
 )
 
-func ConvertStruct(struc any, outputType reflect.Type) (interface{}, error) {
-	// get all fields of the struct
-	var allFields = GetFields(struc)
-	// convert the fields to the destination type
-	return FieldsToTypedStruct(allFields, outputType)
+type field struct {
+	rField reflect.StructField
+	rValue reflect.Value
 }
 
-// GetFields returns a list of all fields of a struct. It will not report unexported fields.
-func GetFields(struc any) []field {
-	numberOfFields := reflect.TypeOf(struc).NumField()
-	var allFields []field
-	var allFieldsValues = GetReflectFieldsValues(struc)
-	var allFieldsStruct = GetReflectFields(struc)
-	// create a list of all fields
-	for i := 0; i < numberOfFields; i++ {
-		allFields = append(allFields, field{rField: allFieldsStruct[i], rValue: allFieldsValues[i]})
+func (f field) String() string {
+	return fmt.Sprintf("Field: %v, Value: %v", f.rField, f.rValue)
+}
+
+// FieldsToGenericStruct converts a list of fields to a struct of a generic type.
+func FieldsToGenericStruct(fields []field) reflect.Value {
+	// Create a new instance of the destination type
+	var fieldsStruct []reflect.StructField
+	var fieldsValues []reflect.Value
+	for _, f := range fields {
+		fieldsStruct = append(fieldsStruct, f.rField)
+		fieldsValues = append(fieldsValues, f.rValue)
 	}
-	return allFields
-}
+	// Create a new instance of the destination type
+	ogStructOf := reflect.StructOf(fieldsStruct)
+	inter := reflect.New(ogStructOf).Elem().Interface()
 
-// GetReflectFieldsValues returns a list of all fields values of a struct. It will not report unexported fields.
-func GetReflectFieldsValues(struc any) []reflect.Value {
-	numberOfFields := reflect.TypeOf(struc).NumField()
-	var allFieldsValues []reflect.Value
-	// create a list of all fields values
-	for i := 0; i < numberOfFields; i++ {
-		if reflect.ValueOf(struc).Field(i).CanInterface() {
-			allFieldsValues = append(allFieldsValues, reflect.ValueOf(struc).FieldByName(reflect.TypeOf(struc).Field(i).Name))
+	// Get the value of the source struct
+	srcVal := reflect.ValueOf(inter)
+
+	// Get the type of the source struct
+	srcType := srcVal.Type()
+
+	// Create a new instance of the destination type
+	dst := reflect.New(srcType).Elem()
+
+	// don't do any checks since the destination type is a generic struct
+	// Copy fields with their values from the source struct to the destination struct
+	for i := 0; i < srcVal.NumField(); i++ {
+		dstField := dst.FieldByName(srcType.Field(i).Name)
+		if dstField.IsValid() && dstField.CanSet() {
+			dstField.Set(fieldsValues[i])
 		}
 	}
-	return allFieldsValues
-}
 
-// GetReflectFields returns a list of all fields of a struct. It will not report unexported fields.
-func GetReflectFields(struc any) []reflect.StructField {
-	numberOfFields := reflect.TypeOf(struc).NumField()
-	var allFields []reflect.StructField
-	// create a list of all fields
-	for i := 0; i < numberOfFields; i++ {
-		if reflect.ValueOf(struc).Field(i).CanInterface() {
-			allFields = append(allFields, reflect.TypeOf(struc).Field(i))
-		}
-	}
-	return allFields
+	return dst
 }
 
 /*
@@ -115,4 +115,43 @@ func FieldsToTypedStruct(fields []field, outputType reflect.Type) (reflect.Value
 	}
 
 	return dst, nil
+}
+
+// GetFields returns a list of all fields of a struct. It will not report unexported fields.
+func GetFields(struc any) []field {
+	numberOfFields := reflect.TypeOf(struc).NumField()
+	var allFields []field
+	var allFieldsValues = GetReflectFieldsValues(struc)
+	var allFieldsStruct = GetReflectFields(struc)
+	// create a list of all fields
+	for i := 0; i < numberOfFields; i++ {
+		allFields = append(allFields, field{rField: allFieldsStruct[i], rValue: allFieldsValues[i]})
+	}
+	return allFields
+}
+
+// GetReflectFieldsValues returns a list of all fields values of a struct. It will not report unexported fields.
+func GetReflectFieldsValues(struc any) []reflect.Value {
+	numberOfFields := reflect.TypeOf(struc).NumField()
+	var allFieldsValues []reflect.Value
+	// create a list of all fields values
+	for i := 0; i < numberOfFields; i++ {
+		if reflect.ValueOf(struc).Field(i).CanInterface() {
+			allFieldsValues = append(allFieldsValues, reflect.ValueOf(struc).FieldByName(reflect.TypeOf(struc).Field(i).Name))
+		}
+	}
+	return allFieldsValues
+}
+
+// GetReflectFields returns a list of all fields of a struct. It will not report unexported fields.
+func GetReflectFields(struc any) []reflect.StructField {
+	numberOfFields := reflect.TypeOf(struc).NumField()
+	var allFields []reflect.StructField
+	// create a list of all fields
+	for i := 0; i < numberOfFields; i++ {
+		if reflect.ValueOf(struc).Field(i).CanInterface() {
+			allFields = append(allFields, reflect.TypeOf(struc).Field(i))
+		}
+	}
+	return allFields
 }

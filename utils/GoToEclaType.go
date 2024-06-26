@@ -1,5 +1,8 @@
 package utils
 
+// If you have tried to optimize this code but failed add the time wasted to the counter below
+// Time wasted optimizing : 1h
+
 import (
 	"fmt"
 	"reflect"
@@ -41,6 +44,8 @@ func GoToEclaType(arg any) eclaType.Type {
 		}
 		return &eclaType.Map{Keys: keys, Values: values, Typ: fmt.Sprint(reflect.TypeOf(arg)), TypKey: reflect.TypeOf(arg).Key().String(), TypVal: reflect.TypeOf(arg).Elem().String()}
 	default:
+		fmt.Println("Unknown type")
+		fmt.Println(reflect.TypeOf(arg))
 		return eclaType.Null{}
 	}
 }
