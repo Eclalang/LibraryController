@@ -5,6 +5,26 @@ import (
 	"reflect"
 )
 
+func EclaStructFieldsToFields(eclaStruct *eclaType.Struct) []field {
+	var fields []field
+	for _, key := range eclaStruct.Definition.Order {
+		val := eclaStruct.Fields[key]
+		var f field
+		var derefValGoType = EclaTypeToGo(*val)
+		if derefValGoType == nil {
+			// for now, we will just ignore the field if it is nil since it is not possible to get the type of nil except when using a function in the EclaTypeToGo function
+			continue
+		}
+		f.rField = reflect.StructField{
+			Name: key,
+			Type: reflect.TypeOf(derefValGoType),
+		}
+		f.rValue = reflect.ValueOf(derefValGoType)
+		fields = append(fields, f)
+	}
+	return fields
+}
+
 // EclaTypeToGo converts an eclaType to a go type.
 func EclaTypeToGo(arg eclaType.Type) any {
 	switch arg.(type) {
@@ -37,6 +57,9 @@ func EclaTypeToGo(arg eclaType.Type) any {
 			mapVal.SetMapIndex(reflect.ValueOf(k), reflect.ValueOf(v))
 		}
 		return mapVal.Interface()
+	case *eclaType.Struct:
+		eclaStruct := arg.(*eclaType.Struct)
+		return FieldsToGenericStruct(EclaStructFieldsToFields(eclaStruct)).Interface()
 	default:
 		return nil
 	}
