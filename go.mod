@@ -14,4 +14,5 @@ require (
 	github.com/Eclalang/regex v1.0.1
 	github.com/Eclalang/strings v1.0.0
 	github.com/Eclalang/time v1.0.1
+	github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3
 )

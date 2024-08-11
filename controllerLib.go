@@ -50,6 +50,9 @@ func init() {
 		"time": func() Lib {
 			return NewTime()
 		},
+		"pixel": func() Lib {
+			return NewPixel()
+		},
 	}
 
 }
